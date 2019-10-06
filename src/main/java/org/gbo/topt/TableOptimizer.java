@@ -41,7 +41,7 @@ public class TableOptimizer {
 
 			System.out.println(String.format("**** TURN %s ****", turn));
 
-			showContacts(contacts);
+			//showContacts(contacts);
 
 			resetTablesUsage(tablesUsage);
 			resetTables(tables);
@@ -123,11 +123,13 @@ public class TableOptimizer {
 	}
 
 	private static int poids(int contacts[][], int person) {
-		int p = Integer.MAX_VALUE;
+		int p = 0;
 		for (int cp = 0; cp < personsNumber; cp++) {
-			 //p += contacts[person][cp];
-
-			p = Math.min(contacts[person][cp], p);
+			p += contacts[person][cp];
+			
+			if (contacts[person][cp]==0) {
+				p -= 100;
+			}
 		}
 		return p;
 	}
